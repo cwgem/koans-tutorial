@@ -10,6 +10,13 @@ This tutorial is licensed [Attribution 3.0 Unported (CC BY 3.0)](http://creative
 
 Welcome to Ruby, and I hope you enjoy the journey.
 
+Requirements
+------------
+
+The tutorials are written in [Asciidoc](http://www.methods.co.nz/asciidoc/) and are source highlighted handled by the [Pygments](http://pygments.org/) backend. [Pygments' installation instructions](http://pygments.org/download/) contain information about how to obtain it. Once both Pygments and Asciidoc are installed, files can be output to HTML using the following command:
+
+``asciidoc -a pygments= -b xhtml11 -o out/file.html file.txt``
+
 Table Of Contents
 -----------------
 
