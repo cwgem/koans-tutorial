@@ -1,0 +1,326 @@
+= Filling The Void =
+
+Before you stands emptiness. Where to start when there is nothing? Without the proper tools, the wise developer is at a constant struggle with the treacherous journey ahead. Here I will introduce you to handy tools to improve productivity and make the path to enlightenment clearer.
+
+== Gem: The Ruby Code Treasure Chest ==
+
+As the wise saying goes, "Don't reinvent the wheel." While Ruby is a comprehensive language, there are something things that it alone cannot accomplish easily, or without help. For this purpose, Ruby has a powerful tool called rubygems to provide access to a large array of prebuilt solutions to common problems. 
+
+Take for example XML parsing. This problem is fairly common, and while Ruby provides a way to parse XML, some beginners might prefer an easy to use interface. For example this simple XML file:
+
+[source,xml]
+-----------
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="nutrition.css"?>
+<nutrition>
+
+<daily-values>
+	<total-fat units="g">65</total-fat>
+	<saturated-fat units="g">20</saturated-fat>
+	<cholesterol units="mg">300</cholesterol>
+	<sodium units="mg">2400</sodium>
+	<carb units="g">300</carb>
+	<fiber units="g">25</fiber>
+	<protein units="g">50</protein>
+</daily-values>
+
+<food>
+	<name>Avocado Dip</name>
+	<mfr>Sunnydale</mfr>
+	<serving units="g">29</serving>
+	<calories total="110" fat="100"/>
+	<total-fat>11</total-fat>
+	<saturated-fat>3</saturated-fat>
+	<cholesterol>5</cholesterol>
+	<sodium>210</sodium>
+	<carb>2</carb>
+	<fiber>0</fiber>
+	<protein>1</protein>
+	<vitamins>
+		<a>0</a>
+		<c>0</c>
+	</vitamins>
+	<minerals>
+		<ca>0</ca>
+		<fe>0</fe>
+	</minerals>
+</food>
+
+<food>
+	<name>Bagels, New York Style </name>
+	<mfr>Thompson</mfr>
+	<serving units="g">104</serving>
+	<calories total="300" fat="35"/>
+	<total-fat>4</total-fat>
+	<saturated-fat>1</saturated-fat>
+	<cholesterol>0</cholesterol>
+	<sodium>510</sodium>
+	<carb>54</carb>
+	<fiber>3</fiber>
+	<protein>11</protein>
+	<vitamins>
+		<a>0</a>
+		<c>0</c>
+	</vitamins>
+	<minerals>
+		<ca>8</ca>
+		<fe>20</fe>
+	</minerals>
+</food>
+
+<food>
+	<name>Beef Frankfurter, Quarter Pound </name>
+	<mfr>Armitage</mfr>
+	<serving units="g">115</serving>
+	<calories total="370" fat="290"/>
+	<total-fat>32</total-fat>
+	<saturated-fat>15</saturated-fat>
+	<cholesterol>65</cholesterol>
+	<sodium>1100</sodium>
+	<carb>8</carb>
+	<fiber>0</fiber>
+	<protein>13</protein>
+	<vitamins>
+		<a>0</a>
+		<c>2</c>
+	</vitamins>
+	<minerals>
+		<ca>1</ca>
+		<fe>6</fe>
+	</minerals>
+</food>
+
+<food>
+	<name>Chicken Pot Pie</name>
+	<mfr>Lakeson</mfr>
+	<serving units="g">198</serving>
+	<calories total="410" fat="200"/>
+	<total-fat>22</total-fat>
+	<saturated-fat>9</saturated-fat>
+	<cholesterol>25</cholesterol>
+	<sodium>810</sodium>
+	<carb>42</carb>
+	<fiber>2</fiber>
+	<protein>10</protein>
+	<vitamins>
+		<a>20</a>
+		<c>2</c>
+	</vitamins>
+	<minerals>
+		<ca>2</ca>
+		<fe>10</fe>
+	</minerals>
+</food>
+
+<food>
+	<name>Cole Slaw</name>
+	<mfr>Fresh Quick</mfr>
+	<serving units=" cup">1.5</serving>
+	<calories total="20" fat="0"/>
+	<total-fat>0</total-fat>
+	<saturated-fat>0</saturated-fat>
+	<cholesterol>0</cholesterol>
+	<sodium>15</sodium>
+	<carb>5</carb>
+	<fiber>2</fiber>
+	<protein>1</protein>
+	<vitamins>
+		<a>30</a>
+		<c>45</c>
+	</vitamins>
+	<minerals>
+		<ca>4</ca>
+		<fe>2</fe>
+	</minerals>
+</food>
+
+<food>
+	<name>Eggs</name>
+	<mfr>Goodpath</mfr>
+	<serving units="g">50</serving>
+	<calories total="70" fat="40"/>
+	<total-fat>4.5</total-fat>
+	<saturated-fat>1.5</saturated-fat>
+	<cholesterol>215</cholesterol>
+	<sodium>65</sodium>
+	<carb>1</carb>
+	<fiber>0</fiber>
+	<protein>6</protein>
+	<vitamins>
+		<a>6</a>
+		<c>0</c>
+	</vitamins>
+	<minerals>
+		<ca>2</ca>
+		<fe>4</fe>
+	</minerals>
+</food>
+
+<food>
+	<name>Hazelnut Spread</name>
+	<mfr>Ferreira</mfr>
+	<serving units="tbsp">2</serving>
+	<calories total="200" fat="90"/>
+	<total-fat>10</total-fat>
+	<saturated-fat>2</saturated-fat>
+	<cholesterol>0</cholesterol>
+	<sodium>20</sodium>
+	<carb>23</carb>
+	<fiber>2</fiber>
+	<protein>3</protein>
+	<vitamins>
+		<a>0</a>
+		<c>0</c>
+	</vitamins>
+	<minerals>
+		<ca>6</ca>
+		<fe>4</fe>
+	</minerals>
+</food>
+
+<food>
+	<name>Potato Chips</name>
+	<mfr>Lees</mfr>
+	<serving units="g">28</serving>
+	<calories total="150" fat="90"/>
+	<total-fat>10</total-fat>
+	<saturated-fat>3</saturated-fat>
+	<cholesterol>0</cholesterol>
+	<sodium>180</sodium>
+	<carb>15</carb>
+	<fiber>1</fiber>
+	<protein>2</protein>
+	<vitamins>
+		<a>0</a>
+		<c>10</c>
+	</vitamins>
+	<minerals>
+		<ca>0</ca>
+		<fe>0</fe>
+	</minerals>
+</food>
+
+<food>
+	<name>Soy Patties, Grilled</name>
+	<mfr>Gardenproducts</mfr>
+	<serving units="g">96</serving>
+	<calories total="160" fat="45"/>
+	<total-fat>5</total-fat>
+	<saturated-fat>0</saturated-fat>
+	<cholesterol>0</cholesterol>
+	<sodium>420</sodium>
+	<carb>10</carb>
+	<fiber>4</fiber>
+	<protein>9</protein>
+	<vitamins>
+		<a>0</a>
+		<c>0</c>
+	</vitamins>
+	<minerals>
+		<ca>0</ca>
+		<fe>0</fe>
+	</minerals>
+</food>
+
+<food>
+	<name>Truffles, Dark Chocolate</name>
+	<mfr>Lyndon's</mfr>
+	<serving units="g">39</serving>
+	<calories total="220" fat="170"/>
+	<total-fat>19</total-fat>
+	<saturated-fat>14</saturated-fat>
+	<cholesterol>25</cholesterol>
+	<sodium>10</sodium>
+	<carb>16</carb>
+	<fiber>1</fiber>
+	<protein>1</protein>
+	<vitamins>
+		<a>0</a>
+		<c>0</c>
+	</vitamins>
+	<minerals>
+		<ca>0</ca>
+		<fe>0</fe>
+	</minerals>
+</food>
+
+</nutrition>
+-----------
+
+It lists some nutritional information for various foods. Save this file as `nutrition.xml` in a folder. Now to use some easy work with code called `xml-object`, or as the Ruby community would most likely refer to it, the `xml-object` gem. Installation of the gem is very simple:
+
+[source,console]
+$ gem install xml-object
+
+That's it! The xml-object gem is installed. Now we could write a Ruby script to interact with the XML file using our new and powerful toolset, but there's a more interesting way to work with Ruby code. This is known as working with the REPL (Read Evaluate Print Loop). It is a process by where commands can be entered and evaluated right away, rather than writing a script and running it. The REPL is often used by developers to  prototype things out quickly before adding it to their main application.
+
+== Trying Out Code With The pry REPL ==
+
+Now Ruby comes with a REPL known as `irb`. However, a more powerful REPL exists known as `pry`. Interestingly enough it is also a gem! That's right, Ruby gems are not restricted to solely code for writing programs. It can also install applications that are built with Ruby, or help make Ruby development easier. Once again the installation is very simple:
+
+[source,console]
+$ gem install pry
+
+The installation is finished, and we can begin writing some code. Don't feel let down if the code doesn't make sense, it's just here to show what Ruby code looks like, and how easy it is to use. To start, navigate to the folder with `nutrition.xml` contained in it and start pry:
+
+[source,console]
+$ pry --simple-prompt
+>>
+
+This gives a prompt for commands to be entered, such as simple arithmetic:
+
+[source,irb]
+>> 1 + 2
+=> 3
+
+Now it's time to import the `xml-object` code so it can be used in this session:
+
+[source,irb]
+>> require 'xml-object'
+=> true
+
+Next is parsing the XML:
+
+[source,irb]
+>> xml = XMLObject.new(File.open('nutrition.xml'))
+=> ""
+
+Now to get the daily values for sodium:
+
+[source,irb]
+>> xml['daily-values']['sodium']
+=> "2400"
+
+Only 3 commands entered and we've already parsed XML and displayed some information from it! How about the name and sodium values for each of the food items?
+
+[source,irb]
+>> xml.foods.each { |food| puts "#{food.name} #{food.sodium}" }
+Avocado Dip 210
+Bagels, New York Style  510
+Beef Frankfurter, Quarter Pound  1100
+Chicken Pot Pie 810
+Cole Slaw 15
+Eggs 65
+Hazelnut Spread 20
+Potato Chips 180
+Soy Patties, Grilled 420
+Truffles, Dark Chocolate 10
+=> ["", "", "", "", "", "", "", "", "", ""]
+
+Another nice thing about `pry` is that it can be used to show documentation. For example take the `XMLObject.new` method. `pry` is able to show documentation for it as follows:
+
+[source,irb]
+-----
+>> cd XMLObject
+>> show-doc new
+
+From: /Users/chriswhite/Ruby/ruby-1.9.2/lib/ruby/gems/1.9.1/gems/xml-object-0.9.93/lib/xml-object.rb @ line 11:
+Number of lines: 2
+
+signature: new(duck)
+
+Returns a String or Array object representing the given XML, decorated
+with methods to access attributes and/or child elements.
+-----
+
+In this case, an input is given (the XML string read in from the nutrition.xml file) and returns a String or Array object. You don't need to worry about what that means at this point, that's what upcoming tutorials will dive into! Now with a solid toolkit in front of you, it is time to continue the journey, and look into how to use tests to help explore the language.
